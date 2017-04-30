@@ -22,7 +22,6 @@ class ViewController: UIViewController {
     friendsContent.body = "'PIVOTTTT!!'"
     friendsContent.badge = 1
     friendsContent.categoryIdentifier = "friendsQuizCategory"
-    //1 -
     friendsContent.sound = UNNotificationSound.default()
     
     let quizTrigger = UNTimeIntervalNotificationTrigger(timeInterval: 2, repeats: false)
@@ -42,8 +41,6 @@ class ViewController: UIViewController {
   }
 
 
-
-
 }
 
 //MARK - UNNotification Delegate Methods
@@ -56,7 +53,6 @@ extension ViewController: UNUserNotificationCenterDelegate {
   
   func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
     
-    //17 -
     if response.actionIdentifier == "ross" {
       responseLabel.text = "That's the correct answer!"
       friendImage.image = #imageLiteral(resourceName: "ross")
