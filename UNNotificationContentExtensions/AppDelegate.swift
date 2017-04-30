@@ -7,15 +7,27 @@
 //
 
 import UIKit
+import UserNotifications
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
   var window: UIWindow?
 
-
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-    // Override point for customization after application launch.
+
+    UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { (permissionGranted, error) in
+        print(error as Any)
+    }
+    
+    let choiceA = UNNotificationAction(identifier: "ross", title: "Ross", options: [.foreground])
+    let choiceB = UNNotificationAction(identifier: "chandler", title: "Chandler", options: [.foreground])
+    let choiceC = UNNotificationAction(identifier: "joey", title: "Joey", options: [.foreground])
+    
+    let friendsQuizCategory = UNNotificationCategory(identifier: "friendsQuizCategory", actions: [choiceA, choiceB, choiceC], intentIdentifiers: [], options: [])
+    
+    UNUserNotificationCenter.current().setNotificationCategories([friendsQuizCategory])
+    
     return true
   }
 
