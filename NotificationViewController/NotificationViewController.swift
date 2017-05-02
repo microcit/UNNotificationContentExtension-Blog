@@ -36,17 +36,15 @@ class NotificationViewController: UIViewController, UNNotificationContentExtensi
           if response.actionIdentifier == "ross" {
             friendsImage.image = #imageLiteral(resourceName: "rossCorrect")
             answerLabel.text = "That's the correct answer!"
-            completion(.dismissAndForwardAction)
           } else if response.actionIdentifier == "chandler" {
             friendsImage.image = #imageLiteral(resourceName: "chandlerWrong")
             answerLabel.text = "Could you BE more wrong!?"
-            completion(.dismiss)
           } else {
             friendsImage.image = #imageLiteral(resourceName: "joeyWrong")
             answerLabel.text = "Try again... or go eat a sandwich."
-            completion(.dismiss)
           }
           //8 - Do not dismiss the notification interface. The content extension handles the selected action.
+          completion(.doNotDismiss)
         
     }
   
